@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agencia de Viajes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Agencia de Viajes</h1>
+        <nav>
+            <ul>
+                <li><a href="#busqueda">Buscar Vuelos</a></li>
+                <li><a href="#paquetes">Paquetes Turísticos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="busqueda">
+        <h2>Buscar Vuelos</h2>
+        <form id="form-busqueda">
+            <label for="origen">Origen:</label>
+            <input type="text" id="origen" required>
+            
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" required>
+            
+            <label for="fecha">Fecha de Viaje:</label>
+            <input type="date" id="fecha" required>
+            
+            <button type="submit">Buscar</button>
+        </form>
+        <div id="resultados"></div>
+    </section>
+    
+    <section id="paquetes">
+        <h2>Paquetes Turísticos</h2>
+        <p>Explora nuestros paquetes especiales para tu próximo viaje.</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Agencia de Viajes. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        document.getElementById("form-busqueda").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const origen = document.getElementById("origen").value;
+            const destino = document.getElementById("destino").value;
+            const fecha = document.getElementById("fecha").value;
+            
+            if (origen && destino && fecha) {
+                document.getElementById("resultados").innerHTML = 
+                    `<p>Buscando vuelos de <strong>${origen}</strong> a <strong>${destino}</strong> para la fecha <strong>${fecha}</strong>...</p>`;
+                
+                // Simulación de búsqueda de vuelos (puede integrarse con API externa en el futuro)
+                setTimeout(() => {
+                    document.getElementById("resultados").innerHTML += 
+                        `<p><strong>Vuelo encontrado:</strong> ${origen} → ${destino} el ${fecha} - Precio: $200 USD</p>`;
+                }, 2000);
+            } else {
+                document.getElementById("resultados").innerHTML = 
+                    `<p style='color:red;'>Por favor, completa todos los campos.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
